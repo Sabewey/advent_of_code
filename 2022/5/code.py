@@ -17,19 +17,36 @@ stacks = {
     8: "SWVQ",
     9: "CNDTMLHW",
 }
+
+""" stacks = {
+    1: "NZ",
+    2: "DCM",
+    3: "P",
+} """
+
 #'move 1 from 8 to 9'
-for instruction in data:
-    n, From, To, = instruction[0], instruction[1], instruction[2]
-    stacks[To] = stacks[From][:n][::-1] + stacks[To]
-    stacks[From] = stacks[From][n:]
+def move(data, part):
+    stacks_copy = stacks.copy()
+    for instruction in data:
+        n, From, To, = instruction[0], instruction[1], instruction[2]
+        if part == 1:
+            stacks_copy[To] = stacks_copy[From][:n][::-1] + stacks_copy[To]
+            stacks_copy[From] = stacks_copy[From][n:]
+        else:
+            stacks_copy[To] = stacks_copy[From][:n] + stacks_copy[To]
+            stacks_copy[From] = stacks_copy[From][n:]
+    
+    # Gather top of each stack
+    res = ""
+    for i in range(1,len(stacks_copy)+1):
+        if len(stacks_copy[i]) > 0:
+            res += stacks_copy[i][0]
+    return res
 
-res = ""
-for i in range(1,10):
-    res += stacks[i][0]
 
 
-print("Part One : "+ str(res))
+print("Part One : "+ str(move(data, 1)))
 
 
 
-print("Part Two : "+ str(None))
+print("Part Two : "+ str(move(data, 2)))
