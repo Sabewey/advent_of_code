@@ -8,10 +8,7 @@ def nDistinctChars(n):
 
         lastN = set(charList[-n:])
         if len(lastN) == n:
-            print(len(charList))
-            break
+            return len(charList)
 
-print("Part 1:")
-nDistinctChars(4)
-print("Part 2:")
-nDistinctChars(14)
+print("Part 1: " + str(nDistinctChars(4)))
+print("Part 2: " + str(nDistinctChars(14)))
