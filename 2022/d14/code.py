@@ -1,3 +1,7 @@
+#No time for cleanup right now, but here is the code with comments for part 1 and 2.
+#Part 1: How many sand grains will settle? without floor
+#Part 2: How many sand grains will settle? with floor
+
 with open("input.txt", "r") as f:
     size = 1000 #Guessing the size of the matrix, its fine since the cave is roughly 500x500
     matrix = [[0 for _ in range(size)] for _ in range(size)]
